@@ -2,7 +2,8 @@ from sqlconnection import *
 
 cursor, conn = connection()
 
-def delete_rows(id):
+def delete_rows():
+    id = int(input('enter no: '))
     str = "delete from city where id ='%d'"  # execute this SQL command at db server
     args = id
 
@@ -11,14 +12,9 @@ def delete_rows(id):
     conn.commit()
     print('1 row is deleted')
 
-x =int(input('enter no: '))
-
-
-delete_rows(x)
-
 #update rows
-def update_rows(id):
-
+def update_rows():
+    id = int(input('enter no: '))
     col_name =input("enter column name: ")
     col_value = input("enter value: ")
 
@@ -29,12 +25,11 @@ def update_rows(id):
     conn.commit()
     print('1 row is updated')
 
-x =int(input('enter no: '))
-update_rows(x)
 
 # close connection
 def close():
     cursor.close()
     conn.close()
     print("connection close")
+
 

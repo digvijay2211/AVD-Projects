@@ -1,28 +1,30 @@
-from sqlconnection import *
+from sqlconnection import connection
+from delete_update import  delete_rows, update_rows
+
+cursor, conn = connection()
 # Take input from user
 def userinput():
     print("What you want to do: ")
-    options = {1:'create table', 2: "delete from table"} # dir 
+    options = {1:'create table', 2: "delete from table", 3: "update table"} # dir
     for i,j in options.items(): # taking key as i and j as value in item() not call then only key is getting
         print(i,j)
 
     i = int(input("Select option from above list: "))
 
+    print(i)
     # calling opretion fuc to perform specific task
     return opretion(i)
 
 #  logic for which opretion need to perform
 def opretion(a):
-    
-    op = None   # assign empty variable
 
-    # Create table
     if a == 1:
-        op = create_table()
-
-    # calling fuc to execute opretion
-    curseor_func(op)
-    print("table created succesful")
+        create_table()
+        print("table created succesful")
+    elif a == 2:
+        delete_rows()
+    elif a == 3:
+        update_rows()
 
     # closing connection
     close()
@@ -43,14 +45,7 @@ def create_table():
     table = f"create table {tb}({columns_sql})"
 
     # return syntax for table creation
-    return table
-
-
-        
-
-# logic of executution DML command         
-def curseor_func(a):
-    cursor.execute(a)
+    cursor.execute(table)
 
 # close connection
 def close():
@@ -59,7 +54,7 @@ def close():
     print("connection close")
 
 # calling function for takeing input from user
-cursor, conn = connection() 
+
 userinput()
 
 

@@ -16,6 +16,6 @@ def insert_opration():
     conn.commit()
     print("insert succesfully")
 
-insert_opration()
+
 cursor.close()
 conn.close()
