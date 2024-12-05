@@ -1,4 +1,4 @@
 host='localhost'
 database='avd'
 user='root'
-password='digvijay@2211'
+password='prasad@1997'

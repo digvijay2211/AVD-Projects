@@ -1,11 +1,12 @@
 from sqlconnection import connection
 from delete_update import  delete_rows, update_rows
+from insert_table import insert_opration
 
 cursor, conn = connection()
 # Take input from user
 def userinput():
     print("What you want to do: ")
-    options = {1:'create table', 2: "delete from table", 3: "update table"} # dir
+    options = {1:'create table', 2: "delete from table", 3: "update table",4:"insert into table"} # dir
     for i,j in options.items(): # taking key as i and j as value in item() not call then only key is getting
         print(i,j)
 
@@ -25,7 +26,8 @@ def opretion(a):
         delete_rows()
     elif a == 3:
         update_rows()
-
+    elif a==4:
+        insert_opration()
     # closing connection
     close()
 
