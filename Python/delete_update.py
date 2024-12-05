@@ -1,33 +1,24 @@
-#delete rows
+from sqlconnection import *
 
-import pymysql
- 
+cursor, conn = connection()
+
 def delete_rows(id):
-    conn = pymysql.connect(host='localhost', database='assig', user='root', password='Admin@123')
-
-    cursor = conn.cursor()  # create cursor object
-
     str = "delete from city where id ='%d'"  # execute this SQL command at db server
-    args = (id)
+    args = id
 
     cursor.execute(str %args)
 
     conn.commit()
     print('1 row is deleted')
 
-    cursor.close() 
-    conn.close() 
-
 x =int(input('enter no: '))
+
+
 delete_rows(x)
 
 #update rows
-
-
 def update_rows(id):
-    conn = pymysql.connect(host='localhost', database='assig', user='root', password='Admin@123')
 
-    cursor = conn.cursor()  # create cursor object
     col_name =input("enter column name: ")
     col_value = input("enter value: ")
 
@@ -35,14 +26,15 @@ def update_rows(id):
 
     print(str)
     cursor.execute(str)
-
     conn.commit()
     print('1 row is updated')
-
-    cursor.close() 
-    conn.close() 
 
 x =int(input('enter no: '))
 update_rows(x)
 
+# close connection
+def close():
+    cursor.close()
+    conn.close()
+    print("connection close")
 
