@@ -1,12 +1,4 @@
-import pymysql
-
-# Establish connection between python and mysql
-def connection():
-    conn = pymysql.connect(host='localhost', database='avd', user='root', password='digvijay@2211')
-    cursor = conn.cursor()
-
-    return cursor, conn
-
+from sqlconnection import *
 # Take input from user
 def userinput():
     print("What you want to do: ")
@@ -26,10 +18,10 @@ def opretion(a):
 
     # Create table
     if a == 1:
-        op = createTable()
+        op = create_table()
 
     # calling fuc to execute opretion
-    curseorFuc(op)
+    curseor_func(op)
     print("table created succesful")
 
     # closing connection
@@ -37,7 +29,7 @@ def opretion(a):
 
 
 # create table fun
-def createTable():
+def create_table():
     
     tb = input('Enter table name: ')
     col = int(input(f"How many col you want in {tb}: "))
@@ -57,7 +49,7 @@ def createTable():
         
 
 # logic of executution DML command         
-def curseorFuc(a):
+def curseor_func(a):
     cursor.execute(a)
 
 # close connection
